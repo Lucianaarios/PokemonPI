@@ -1,0 +1,119 @@
+
+.detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('../../../public/assets/imgs/posibleFondoPokemons2.jpg'); */
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+    text-align: center;
+  
+  }
+  .contentDetail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    height: 50%;
+    border: 2px solid black;
+    background-color: orange;
+  }
+  .detail-container-stats {
+    display: flex;
+    flex-direction: column;
+  }
+  .containerImg img{
+    width: 40px;
+    height: 40px;
+  }
+  .typesContainer{
+    display: flex;
+    align-items: center;
+  }
+  
+  .customButton{
+    /* background-image: url('../../../public/assets/imgs/volverDetail.png'); */
+    background-size: cover; 
+    background-position: center center; 
+    background-color: orange;
+    background-repeat: no-repeat; 
+    position: relative;
+    top: -15em;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .stats{
+    border: 1px solid black;
+     
+    padding: 5px;
+  }
+  
+  
+  
+  .divText {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-top: 20px;
+  }
+  
+  .h2Detail {
+    font-size: 2rem;
+    text-align: right;
+    margin: 10px 0;
+    font-family: 'Belinda', sans-serif;
+  }
+  
+  .h5Detail {
+    text-align: left;
+    font-size: 1.2rem;
+    margin: 5px 2px;
+    border: 2px solid black;
+    font-weight: 400;
+    border-radius: 0px 0px 5px 5px; 
+    font-family: 'Pixelify Sans', sans-serif;
+  }
+  
+  .imgDetail {
+    max-width: 100%;
+    border: 2px solid black;
+    padding: 10px;
+    width: 400px;
+    height: auto;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .btnBack {
+    position: relative;
+    top: -150px;
+    left: -15px;
+    transform: scale(0.5);
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 0px;
+  }
+  
+  .btnBack:hover {
+    border-bottom: 2px solid black;
+  }
+  
+  .imgBack {
+    background: none;
+    border: none;
+  }
+  
+  @media screen and (max-width: 2300px) {
+    .btnBack {
+  
+      top: -150px;
+      left: -500px;
+    }
+  }

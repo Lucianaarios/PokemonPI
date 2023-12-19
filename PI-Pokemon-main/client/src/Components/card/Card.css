@@ -1,0 +1,167 @@
+.card-container {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  height: 420px;
+  width: 300px;
+ margin: 10px;
+ background-color: rgb(234, 241, 241);
+
+}
+.namePokemon{
+  border: 2px solid rgb(11, 11, 10);
+  
+  border-radius: 7px;
+  width: 100%;
+}
+.containerImg img{
+width: 60px;
+height: 60px;
+
+border-radius: 50%;
+}
+
+.card-content {
+position: relative;
+}
+
+.collection-message {
+position: absolute;
+bottom: -110px; 
+left: 0;
+right: 0;
+text-align: center;
+color: #333; 
+}
+
+
+
+.imgTypes{
+text-align: center;
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+
+
+.imgPokemon{
+width: 140px;
+height: 140px;
+padding: 15px;
+}
+.containerImgPokemon{
+width: 80%;
+height: 200px;
+display: flex;
+justify-content: center;
+border-radius: 5px;
+justify-content: center;
+background-image: url(https://www.google.com.ar/url?sa=i&url=https%3A%2F%2Fwallpaperforu.com%2Fpokemon-hd-wallpaper%2F&psig=AOvVaw3IlTBVJ8SMRUfSOP9EEmyX&ust=1702659843537000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCICr-_izj4MDFQAAAAAdAAAAABAI);
+background-size: auto 100%; 
+background-position: center top; 
+background-repeat: no-repeat; 
+border: 2px solid rgb(10, 10, 9);
+padding: 0px 30px 0px 30px;
+}
+.fire {
+filter: brightness(0) saturate(100%) invert(52%) sepia(89%) saturate(3001%) hue-rotate(5deg) brightness(101%) contrast(94%);
+}
+
+.water {
+filter: brightness(0) saturate(100%) invert(63%) sepia(11%) saturate(3003%) hue-rotate(190deg) brightness(89%) contrast(86%);
+}
+
+.grass {
+filter: brightness(0) saturate(100%) invert(52%) sepia(28%) saturate(1689%) hue-rotate(90deg) brightness(105%) contrast(91%);
+
+}
+
+.electric {
+filter: brightness(0) saturate(100%) invert(76%) sepia(52%) saturate(3455%) hue-rotate(43deg) brightness(104%) contrast(91%);
+}
+
+.ice {
+filter: brightness(0) saturate(100%) invert(79%) sepia(6%) saturate(349%) hue-rotate(176deg) brightness(108%) contrast(100%);
+}
+
+.fighting {
+filter: brightness(0) saturate(100%) invert(35%) sepia(76%) saturate(3379%) hue-rotate(324deg) brightness(94%) contrast(100%);
+}
+
+.poison {
+filter: brightness(0) saturate(100%) invert(74%) sepia(53%) saturate(2879%) hue-rotate(235deg) brightness(105%) contrast(101%);
+}
+
+.ground {
+filter: brightness(0) saturate(100%) invert(88%) sepia(11%) saturate(538%) hue-rotate(345deg) brightness(99%) contrast(87%);
+}
+
+.flying {
+filter: brightness(0) saturate(100%) invert(63%) sepia(11%) saturate(3003%) hue-rotate(190deg) brightness(89%) contrast(300%);
+}
+
+.psychic {
+filter: brightness(0) saturate(100%) invert(59%) sepia(85%) saturate(3735%) hue-rotate(327deg) brightness(94%) contrast(95%);
+}
+
+.bug {
+filter: brightness(0) saturate(100%) invert(80%) sepia(29%) saturate(493%) hue-rotate(120deg) brightness(104%) contrast(99%);
+}
+
+.rock {
+filter: brightness(0) saturate(100%) invert(79%) sepia(18%) saturate(1143%) hue-rotate(333deg) brightness(93%) contrast(95%);
+}
+
+.ghost {
+filter: brightness(0) saturate(100%) invert(75%) sepia(15%) saturate(2723%) hue-rotate(250deg) brightness(104%) contrast(92%);
+}
+
+.dragon {
+filter: brightness(0) saturate(100%) invert(63%) sepia(47%) saturate(4234%) hue-rotate(250deg) brightness(106%) contrast(95%);
+}
+
+.dark {
+filter: brightness(0) saturate(100%) invert(71%) sepia(18%) saturate(2935%) hue-rotate(323deg) brightness(97%) contrast(100%);
+}
+
+.steel {
+filter: brightness(0) saturate(100%) invert(67%) sepia(47%) saturate(445%) hue-rotate(197deg) brightness(102%) contrast(98%);
+}
+
+.fairy {
+filter: brightness(0) saturate(100%) invert(76%) sepia(13%) saturate(515%) hue-rotate(334deg) brightness(106%) contrast(101%);
+}
+
+
+
+
+.card-container h2 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.card-container p {
+  margin: 5px 0;
+}
+
+.card-container a {
+  text-decoration: none;
+  color: #333;
+}
+
+.card-container a:hover {
+  text-decoration: underline;
+}
+.btnX{
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  left: 18.5rem;
+  top: -.5rem;
+  
+}
+
+.btnX:hover{
+  cursor: pointer;
+}

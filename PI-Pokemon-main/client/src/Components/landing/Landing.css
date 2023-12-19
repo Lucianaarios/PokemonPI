@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    background-image: url(https://fondosmil.com/fondo/14740.jpg);
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+  }
+  
+  .imgLanding {
+    max-width: 50%; 
+    height: auto;
+    transition: transform 0.5s ease;
+    z-index: 1;
+  }
+  .imgLanding:hover{
+    transform: scale(1.2);
+  }
+  
+  .btnLanding {
+    margin-top: 40px;
+    
+    padding: 25px 60px;
+    background-color: orange;
+    color: brown;
+    border: 3px solid brown;
+    border-radius: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .btnLanding:hover {
+    transform: scale(1.2);
+  }
+  
