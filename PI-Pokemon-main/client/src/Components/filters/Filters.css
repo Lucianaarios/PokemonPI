@@ -1,41 +1,13 @@
-.filters-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0;
-    background-color: orange;
-    outline: 2px solid brown;
-  }
-  
-  select {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    outline: 2px solid brown;
-    border-radius: 4px;
-    color: brown;
-    background-color: orange; 
-  }
-  
-  
-  
-  @media (min-width: 768px) {
-    .filters-container {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    select {
-      width: 30%;
-      margin: 0;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    
-    select {
-      width: 100%;
-    }
-  }
-  
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+select {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}

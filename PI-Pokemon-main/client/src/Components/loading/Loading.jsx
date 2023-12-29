@@ -1,18 +1,13 @@
-import style from './loading.module.css'
+import React from 'react';
+import './Loading.css'; // Asegúrate de tener estilos CSS para el componente Loading
 
+const Loading = () => {
+  return (
+    <div className="loading-container">
+      <div className="loader"></div>
+      <p>Loading...</p>
+    </div>
+  );
+};
 
-const Loading = () =>{
-    return (
-        <div className={style.container}>
-          <div className={style['img-container']}>
-            <img src='/assets/imgs/imgLoading.gif' alt="" />
-          </div>
-          <div >
-            <h1 className={style.loading}>Loading...</h1>
-          </div>
-        </div>
-      );
-   
-}
-
-export default Loading
+export default Loading;

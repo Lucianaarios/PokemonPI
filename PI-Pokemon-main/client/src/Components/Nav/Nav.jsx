@@ -20,3 +20,23 @@
 // }
 // export default Nav;
 
+
+import React from 'react';
+import SearchBar from '../searchBar/SearchBar';
+import OrderFilters from '../filters/OrderFilters';
+import { Link } from 'react-router-dom';
+import './Nav.css'
+import Logo from '../../assets/imgPokemon.png'
+
+const NavBar = ({ onSearch, handleOrderChange, handleTypeChange }) => {
+  return (
+    <div className="navbar">
+      <img src={Logo} alt="Logo" className="logo" /> 
+      <SearchBar onSearch={onSearch} />
+      <OrderFilters handleOrderChange={handleOrderChange} />
+      <Link to="/create">Crear nuevo Pokemon</Link>
+    </div>
+  );
+};
+
+export default NavBar;

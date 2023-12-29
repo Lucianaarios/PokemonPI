@@ -8,4 +8,5 @@ export const ORDER_ALF = "ORDER_ALF";
 export const ORDER_ATK = "ORDER_ATK";
 export const CLEAN_POKEMON_BY_ID = "CLEAN_POKEMON_BY_ID"
 export const CLEAN_POKEMON_BY_NAME = "CLEAN_POKEMON_BY_NAME"
-export const CURRENT_PAGE = "CURRENT_PAGE"
+export const CURRENT_PAGE = "CURRENT_PAGE";
+export const ADD_POKEMON = "ADD_POKEMON";

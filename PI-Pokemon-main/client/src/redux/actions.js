@@ -1,79 +1,79 @@
-import { GET_POKEMON_BY_NAME,CURRENT_PAGE,CLEAN_POKEMON_BY_NAME, CLEAN_POKEMON_BY_ID , ALL_POKEMONS,GET_TYPES, FILTER, FILTER_BY_TYPE, ORDER_ALF, ORDER_ATK, GET_POKEMON_BY_ID } from "./actions-type";
+import { GET_POKEMON_BY_NAME, CURRENT_PAGE, CLEAN_POKEMON_BY_NAME, CLEAN_POKEMON_BY_ID, ALL_POKEMONS, GET_TYPES, FILTER, FILTER_BY_TYPE, ORDER_ALF, ORDER_ATK, GET_POKEMON_BY_ID, ADD_POKEMON } from "./actions-type";
 import axios from 'axios';
 
-export const cleanPokemonById = () =>{
-    return{
+export const cleanPokemonById = () => {
+    return {
         type: CLEAN_POKEMON_BY_ID
     }
 }
 
-export const setCurrentPage = (payload) =>{
-    return{
+export const setCurrentPage = (payload) => {
+    return {
         type: CURRENT_PAGE,
         payload: payload
     }
 }
 
-export const cleanPokemonByName = (id) =>{
-    return{
+export const cleanPokemonByName = (id) => {
+    return {
         type: CLEAN_POKEMON_BY_NAME
     }
 }
 
-export const orderAlf = ( payload) =>{
-    return{
+export const orderAlf = (payload) => {
+    return {
         type: ORDER_ALF,
         payload: payload
     }
 }
 
-export const orderAtk = (payload) =>{
-    return{
+export const orderAtk = (payload) => {
+    return {
         type: ORDER_ATK,
         payload: payload
     }
 }
 
-export const filter = (byDb) =>{
-    return{
+export const filter = (byDb) => {
+    return {
         type: FILTER,
         payload: byDb
     }
 }
 
-export const filterByType = (typeId) =>{
-    return{
+export const filterByType = (typeId) => {
+    return {
         type: FILTER_BY_TYPE,
         payload: typeId
     }
 }
 
 
-export const allPokemons = () =>{
+export const allPokemons = () => {
     const endpoint = 'http://localhost:3001/pokemons';
-    return async(dispatch) =>{
+    return async (dispatch) => {
         try {
-            const {data} = await axios(endpoint)
+            const { data } = await axios(endpoint)
 
-            return(dispatch)({
+            return (dispatch)({
                 type: ALL_POKEMONS,
                 payload: data
             })
         } catch (error) {
             throw new Error(error.message);
         }
-        
+
     }
 }
 
 
-export const getPokemonByName = (name) =>{
+export const getPokemonByName = (name) => {
     const endpoint = `http://localhost:3001/name?name=${name}`
-    return async(dispatch)=>{
+    return async (dispatch) => {
         try {
-            const {data} = await axios(endpoint);
+            const { data } = await axios(endpoint);
 
-            return(dispatch)({
+            return (dispatch)({
                 type: GET_POKEMON_BY_NAME,
                 payload: data
             })
@@ -83,30 +83,14 @@ export const getPokemonByName = (name) =>{
     }
 }
 
-export const pokemonByID = (id) =>{
+export const pokemonByID = (id) => {
     const endpoint = `http://localhost:3001/pokemons/${id}`
-    return async(dispatch)=>{
+    return async (dispatch) => {
         try {
-            const {data} = await axios(endpoint)
+            const { data } = await axios(endpoint)
 
-            return (dispatch)({ 
+            return (dispatch)({
                 type: GET_POKEMON_BY_ID,
-                payload: data
-        })
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-}
-
-export const getTypes = () =>{
-    const endpoint = 'http://localhost:3001/types';
-    return async(dispatch)=>{
-        try {
-            const {data} = await axios(endpoint)
-
-            return(dispatch)({
-                type: GET_TYPES,
                 payload: data
             })
         } catch (error) {
@@ -114,3 +98,42 @@ export const getTypes = () =>{
         }
     }
 }
+
+export const getTypes = () => {
+    const endpoint = 'http://localhost:3001/types';
+    return async (dispatch) => {
+        try {
+            const { data } = await axios(endpoint);
+
+            return dispatch({
+                type: GET_TYPES,
+                payload: data,
+            });
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+}
+
+export const addPokemon = (pokemonData) => {
+    return async (dispatch) => {
+        try {
+            console.log('Dispatching addPokemon action with data:', pokemonData);
+            console.log('el pokemon se esta creando en addPokemon')
+            // Realiza la solicitud POST para agregar el nuevo Pokémon a la base de datos
+            const response = await axios.post('http://localhost:3001/pokemons', pokemonData);
+
+            // Despacha la acción para actualizar el estado con el nuevo Pokémon
+            dispatch({
+                type: ADD_POKEMON,
+                payload: response.data,
+            });
+
+            return 'Pokemon added successfully:', response.data;
+
+        } catch (error) {
+            console.error('Error adding Pokemon:', error);
+            throw new Error(error.message);
+        }
+    };
+};

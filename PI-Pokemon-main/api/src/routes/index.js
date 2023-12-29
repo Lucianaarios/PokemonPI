@@ -5,13 +5,15 @@ const getPokemonByName = require('../Handlers/getPokemonByName');
 const getTypes = require('../Handlers/getTypes')
 const postPokemons = require('../Handlers/postPokemons')
 const deletePokemon = require("../Handlers/deletePokemon")
-//require('events').EventEmitter.defaultMaxListeners = 20;
-
+const multer = require('multer');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 
 const router = Router();
+
+const storage = multer.memoryStorage(); 
+const upload = multer({ storage: storage });
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -22,7 +24,7 @@ router.get('/name', getPokemonByName)
 
 router.get('/pokemons/:idPokemon', getPokemon)
 
-router.post('/pokemons', postPokemons)
+router.post('/pokemons', upload.single('image'), postPokemons)
 
 router.get('/types', getTypes)
 

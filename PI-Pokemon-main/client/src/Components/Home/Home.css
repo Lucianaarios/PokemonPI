@@ -1,0 +1,67 @@
+/* Estilos para el contenedor principal de la página */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url(https://picfiles.alphacoders.com/631/631754.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
+  }
+  
+  
+  /* Estilos para el contenedor de los resultados de la búsqueda */
+  .search-results {
+    margin-top: 10px;
+  }
+  
+  /* Estilos para el contenedor de la lista de Pokémon */
+  .pokemon-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Cambiado para mostrar 4 tarjetas por fila */
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Estilos para cada tarjeta de Pokémon en la lista */
+  .pokemon-card {
+    background-color: rgba(96, 92, 92, 0.9); /* Fondo blanco translúcido */
+    border: 1px solid #f9f8f8; /* Borde negro */
+    border-radius: 40px; /* Bordes redondeados */
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 15px 10px rgba(197, 26, 26, 0.782); /* Sombra gris */
+    width: 200px; /* Ajusta la anchura según tus necesidades */
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    margin-bottom: 0; /* Elimina el margen inferior */
+  }
+  
+  /* Estilos para la imagen de cada tarjeta de Pokémon */
+  .pokemon-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para el nombre de cada tarjeta de Pokémon */
+  .pokemon-name {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  /* Estilos para los tipos de cada tarjeta de Pokémon */
+  .pokemon-types {
+    font-style: italic;
+    color: #fbf7f7;
+  }

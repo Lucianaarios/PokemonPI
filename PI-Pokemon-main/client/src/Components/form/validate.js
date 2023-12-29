@@ -1,4 +1,5 @@
 const validate = (data) => {
+    console.log(data)
     let errors = {
         name: null,
         sprite: null,
@@ -10,7 +11,9 @@ const validate = (data) => {
         spd: null,
         types: null,
         height: null,
-        weight: null    };
+        weight: null,
+        hayErrores: null
+    };
 
     // Validaciones para name
     if (data.name.trim().length === 0) {
@@ -22,10 +25,10 @@ const validate = (data) => {
     // Validaciones para image
     if (data.sprite.trim().length === 0) {
         errors.sprite = 'La imagen no puede estar vacía';
-      } else if (!/\.(jpeg|jpg|png|gif|webp|bmp|svg)$/i.test(data.sprite)) {
+    } else if (!/\.(jpeg|jpg|png|gif|webp|bmp|svg)$/i.test(data.sprite)) {
         errors.sprite = 'La imagen debe ser una URL de formato válido (JPEG, JPG, PNG, GIF, WEBP, BMP, SVG)';
-      }
-      
+    }
+
     // Validaciones para hp
     if (data.hp.trim().length === 0) {
         errors.hp = 'HP cannot be an empty field'
@@ -36,13 +39,13 @@ const validate = (data) => {
     // Validaciones para attack
     if (data.atk.trim().length === 0) {
         errors.atk = 'Attack cannot be an empty field'
-    } else if (!Number(data.atk)){
+    } else if (!Number(data.atk)) {
         errors.atk = 'You must enter a number for Attack'
     }
 
     if (data.spAtk.trim().length === 0) {
         errors.spAtk = 'Attack cannot be an empty field'
-    } else if (!Number(data.spAtk)){
+    } else if (!Number(data.spAtk)) {
         errors.spAtk = 'You must enter a number for Attack'
     }
 
@@ -85,7 +88,22 @@ const validate = (data) => {
         errors.types = 'Please select at least one type';
     }
 
-    return errors;
+    if (!errors.name &&
+        !errors.sprite &&
+        !errors.hp &&
+        !errors.atk &&
+        !errors.spAtk &&
+        !errors.def &&
+        !errors.spDef &&
+        !errors.spd &&
+        !errors.types &&
+        !errors.height &&
+        !errors.weight) {
+            errors.hayErrores = true
+        }
+        return errors;
+
+
 }
 
 export default validate;

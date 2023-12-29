@@ -1,4 +1,4 @@
-import { GET_POKEMON_BY_NAME,CLEAN_POKEMON_BY_ID,CURRENT_PAGE, CLEAN_POKEMON_BY_NAME,GET_POKEMON_BY_ID, ALL_POKEMONS,GET_TYPES, FILTER, FILTER_BY_TYPE, ORDER_ALF, ORDER_ATK } from "./actions-type";
+import { GET_POKEMON_BY_NAME,CLEAN_POKEMON_BY_ID,CURRENT_PAGE, CLEAN_POKEMON_BY_NAME,GET_POKEMON_BY_ID, ALL_POKEMONS,GET_TYPES, FILTER, FILTER_BY_TYPE, ORDER_ALF, ORDER_ATK, ADD_POKEMON } from "./actions-type";
 
 const initialState = {
     allPokemons: [],
@@ -76,6 +76,7 @@ const reducer = (state= initialState, {type, payload})=>{
                 ...state,
                 pokemonsTypes: payload
             }
+            
         case GET_POKEMON_BY_NAME:
             return{
                 ...state,
@@ -113,12 +114,24 @@ const reducer = (state= initialState, {type, payload})=>{
                 allPokemonsCopy: filteredByType,
                 pokemonFilter: filteredByType
             }
+
+            case ADD_POKEMON:
+      return {
+        ...state,
+        allPokemons: [...state.allPokemons, payload],
+        allPokemonsCopy: [...state.allPokemonsCopy, payload],
+      };
     
         default:
             return{
                 ...state
             }
     }
+    
 }
+
+
+  
+
 
 export default reducer;

@@ -56,6 +56,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByType, filter, orderAlf, orderAtk, setCurrentPage } from "../../redux/actions";
+import './Filters.css'
 
 const OrderFilters = () => {
   const types = useSelector((state) => state.pokemonsTypes);

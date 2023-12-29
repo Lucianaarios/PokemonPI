@@ -9,7 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTypes, allPokemons, getPokemonByName } from './redux/actions';
 import axios from 'axios';
 import HomePage from './Components/Home/HomePage';
-import DetailPage from './Components/detail/DetailPage';
+//import DetailPage from './Components/detail/DetailPage';
+import FormCreate from './Components/form/FormCreate';
+import PokemonDetail from './Components/detail/PokemonDetail';
 
 function App() {
 //   const location = useLocation();
@@ -55,7 +57,8 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/home' element={<HomePage/>} />
-        <Route path='/detail/:id' element={<DetailPage />} />
+        <Route path='/detail/:id' element={<PokemonDetail />} />
+        <Route path="/create" element={<FormCreate />} />
       </Routes>
     
   );

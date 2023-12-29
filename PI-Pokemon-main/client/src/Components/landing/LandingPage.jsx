@@ -14,6 +14,7 @@
 // export default Landing
 
 import { Link } from "react-router-dom";
+import './Landing.css'
 
 const LandingPage = () => {
   // Define the handleButtonClick function
@@ -23,12 +24,13 @@ const LandingPage = () => {
   };
 
   return (
-    <div>
-      <img src="https://fondosmil.com/fondo/14740.jpg" alt="Imagen representativa" />
-      <Link to='/home'>
-        {/* Use the handleButtonClick function in the onClick event */}
-        <button onClick={handleButtonClick}>Ir a la Home Page</button>
-      </Link>
+    <div className="containerLanding">
+      <div className="imgContainer">
+        <Link to='/home'>
+          <button className="buttonLanding" onClick={handleButtonClick}> Home</button>
+        </Link>
+        <img className="imgLanding" src="https://fondosmil.com/fondo/14740.jpg" alt="Imagen representativa" />
+      </div>
     </div>
   );
 };
