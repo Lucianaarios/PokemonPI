@@ -21,14 +21,29 @@
 }
 
 .logo {
-  width: 125px; /* Ajusta el tamaño según tus necesidades */
+  width: 125px; 
   height: auto;
-  margin-right: 100px; /* Agrega margen a la derecha para separar el logo de otros elementos */
+  margin-right: 100px; 
 }
 
 /* Para hacer el navbar un poco más ancho */
 @media (min-width: 768px) {
   .navbar {
-    padding: 5px 40px; /* Puedes ajustar este valor según sea necesario */
+    padding: 5px 40px; 
   }
+}
+
+.buttonCreate {
+  margin-top: 30px;
+    
+  padding: 1px 2px;
+  background-color: orange;
+  color: brown;
+  border: 3px solid brown;
+  border-radius: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-top: -5px;
 }

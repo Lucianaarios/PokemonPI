@@ -88,6 +88,7 @@ const validate = (data) => {
         errors.types = 'Please select at least one type';
     }
 
+    // Validacion de errores
     if (!errors.name &&
         !errors.sprite &&
         !errors.hp &&

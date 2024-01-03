@@ -7,6 +7,7 @@ import SearchBar from '../searchBar/SearchBar';
 import NavBar from '../Nav/Nav';
 import Pagination from '../pagination/Pagination';
 import PokemonDetail from '../detail/PokemonDetail';
+import Modal from '../form/Modal';
 import './Home.css';
 
 const HomePage = () => {
@@ -18,6 +19,7 @@ const HomePage = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getTypes());
@@ -48,8 +50,16 @@ const HomePage = () => {
   };
 
   const filteredPokemons = pokemons.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    pokemon && pokemon.name && pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleOpenCreateModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const handleCloseCreateModal = () => {
+    setCreateModalOpen(false);
+  };
 
 
 
@@ -59,6 +69,7 @@ const HomePage = () => {
         onSearch={handleSearch}
         handleOrderChange={handleOrderChange}
         handleTypeChange={(selectedTypes) => console.log(selectedTypes)}
+        handleOpenCreateModal={handleOpenCreateModal}
       />
       {searchTerm && (
         <div className="search-results">
@@ -79,11 +90,16 @@ const HomePage = () => {
               >
                 <img src={pokemon.sprite} alt={pokemon.name} className="pokemon-image" />
                 <h4 className="pokemon-name">{pokemon.name}</h4>
+                <p>{pokemon.atk}</p>
                 <p className="pokemon-types">
                   {pokemon.types && pokemon.types.length > 0
                     ? pokemon.types.map((type, index) => (
-                      <span key={index} className={`type-${String(type.name).toLowerCase()}`}>
-                        {type.name} - {type.otraPropiedad}
+                      <span key={index}>
+                        {type && type.name && (
+                          <span className={`type-${String(type.name).toLowerCase()}`}>
+                            {type.name} - {type.otraPropiedad}
+                          </span>
+                        )}
                       </span>
                     ))
                     : 'No types'}
@@ -97,6 +113,10 @@ const HomePage = () => {
           pokemon={selectedPokemon}
           onClose={() => setSelectedPokemon(null)}
         />
+      )}
+
+      {isCreateModalOpen && (
+        <Modal onClose={handleCloseCreateModal} />
       )}
 
       <Pagination totalItems={filteredPokemons.length} />

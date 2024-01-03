@@ -101,6 +101,7 @@ export const pokemonByID = (id) => {
 
 export const getTypes = () => {
     const endpoint = 'http://localhost:3001/types';
+    console.log(endpoint)
     return async (dispatch) => {
         try {
             const { data } = await axios(endpoint);
@@ -120,16 +121,14 @@ export const addPokemon = (pokemonData) => {
         try {
             console.log('Dispatching addPokemon action with data:', pokemonData);
             console.log('el pokemon se esta creando en addPokemon')
-            // Realiza la solicitud POST para agregar el nuevo Pokémon a la base de datos
             const response = await axios.post('http://localhost:3001/pokemons', pokemonData);
 
-            // Despacha la acción para actualizar el estado con el nuevo Pokémon
             dispatch({
                 type: ADD_POKEMON,
                 payload: response.data,
             });
 
-            return 'Pokemon added successfully:', response.data;
+            return response;
 
         } catch (error) {
             console.error('Error adding Pokemon:', error);

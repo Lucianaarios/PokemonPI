@@ -19,7 +19,6 @@ import './Landing.css'
 const LandingPage = () => {
   // Define the handleButtonClick function
   const handleButtonClick = () => {
-    // Add the logic you want to execute when the button is clicked
     console.log("Button clicked!");
   };
 

@@ -16,17 +16,16 @@
 }
 
 .imgLanding {
-  width: 100%; /* Ajusta el ancho de la imagen según sea necesario */
-  height: auto; /* Para mantener la proporción original de la imagen */
-  display: block; /* Elimina el espacio adicional debajo de la imagen */
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .buttonLanding {
   position: absolute;
-  bottom: 20px; /* Ajusta la distancia desde la parte inferior según sea necesario */
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 25px 60px;
+  top: 50px; /* Cambia bottom a top para posicionar en la parte superior */
+  right: 20px; /* Ajusta la distancia desde la parte derecha según sea necesario */
+  padding: 10px 30px;
   background-color: orange;
   color: brown;
   border: 3px solid brown;

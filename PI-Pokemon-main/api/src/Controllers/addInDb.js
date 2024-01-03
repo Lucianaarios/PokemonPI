@@ -21,6 +21,7 @@ const addTypesInDb = async (data) => {
 };
 
 const addPokemon = async (name, sprite, hp, atk, def, spd, spAtk, spDef, height, weight, types) => {
+  console.log("data")
   try {
     console.log('Datos del nuevo Pokémon:', name, sprite, hp, atk, def, spd, spAtk, spDef, height, weight, types);
 
@@ -42,13 +43,18 @@ const addPokemon = async (name, sprite, hp, atk, def, spd, spAtk, spDef, height,
       if (created) {
         console.log('Nuevo Pokémon creado:', newPokemon.toJSON());
 
+        const typeNames = types.map(type => type.toLowerCase());
+
         const addTypes = await Type.findAll({
           where: {
-            name: types
+            name: typeNames
           }
         });
 
-        console.log('Tipos a agregar:', addTypes.map(type => type.toJSON()));
+        if (addTypes.length !== types.length) {
+          const missingTypes = types.filter(type => !addTypes.some(dbType => dbType.name === type.toLowerCase()));
+          throw new Error(`Los siguientes tipos no existen: ${missingTypes.join(', ')}`);
+        }
 
         await newPokemon.addType(addTypes);
         console.log('Tipos agregados exitosamente.');
@@ -59,8 +65,8 @@ const addPokemon = async (name, sprite, hp, atk, def, spd, spAtk, spDef, height,
         throw new Error('El Pokémon ya existe en la base de datos');
       }
     } else {
-      console.error('El nuevo pokemón debe tener entre 1 y 2 tipos');
-      throw new Error('El nuevo pokemón debe tener entre 1 y 2 tipos');
+      console.error('El nuevo pokémon debe tener entre 1 y 2 tipos');
+      throw new Error('El nuevo pokémon debe tener entre 1 y 2 tipos');
     }
   } catch (error) {
     console.error('Error al agregar el Pokémon:', error.message);
@@ -70,8 +76,6 @@ const addPokemon = async (name, sprite, hp, atk, def, spd, spAtk, spDef, height,
 
 // Función para verificar si una cadena es una URL de imagen válida
 function isImageUrl(url) {
-  // Implementa la lógica de validación, por ejemplo, utilizando expresiones regulares
-  // En este caso, puedes considerar que es una URL válida si comienza con "http://" o "https://"
   return /^https?:\/\//.test(url);
 }
 

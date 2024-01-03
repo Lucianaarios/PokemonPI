@@ -23,9 +23,11 @@ const FormCreate = () => {
     height: '',
     weight: '',
     types: [],
+    
   });
 
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState(null);
 
   useEffect(() => {
     dispatch(getTypes());
@@ -62,28 +64,52 @@ const FormCreate = () => {
     }
   };
 
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const formErrors = validate(inputData);
     setErrors(formErrors);
-    console.log(formErrors)
-
+  
     try {
       console.log('Submitting data:', inputData);
-      console.log('Se esta creando el pokemon')
-      console.log(Object.keys(formErrors).length)
-
-      if (formErrors.hayErrores) {
-        // Aquí debes esperar a que la acción asíncrona se complete antes de continuar
-        const response = await dispatch(addPokemon(inputData));
-        console.log('Response from backend:', response);
+      console.log('Se esta creando el pokemon');
+      console.log(Object.keys(formErrors).length);
+  
+      const response = await dispatch(addPokemon(inputData));
+      console.log('Response from backend:', response);
+  
+      if (response.status === 200) {
+        console.log('Success status is true');
+        setSuccessMessage('El Pokémon se ha creado con éxito');
+        setInputData({
+          name: '',
+          sprite: '',
+          hp: '',
+          atk: '',
+          spAtk: '',
+          def: '',
+          spDef: '',
+          spd: '',
+          height: '',
+          weight: '',
+          types: [],
+        });
+        setErrors({});
         navigate('/home');
       }
     } catch (error) {
       console.error('Error in handleSubmit:', error);
+      setErrors(prevErrors => ({ ...prevErrors, types: error.message }));
     }
   };
+  
+  useEffect(() => {
+    return () => {
+      setSuccessMessage(null);
+    };
+  }, []);
+
 
   return (
     <div className="container">
@@ -93,14 +119,14 @@ const FormCreate = () => {
           <form className="form" onSubmit={handleSubmit}>
             <label className="formLabel">Nombre:</label>
             <input
-              placeholder="ejemplo: Luciana"
+              placeholder="ejemplo: luciana"
               type="text"
               value={inputData.name}
               name="name"
               id="name"
               onChange={handleChange}
             />
-            {errors.name !== null && <p>{errors.name}</p>}
+            {errors.name !== null && <p className="error-message">{errors.name}</p>}
             <label className="formLabel">Imagen:</label>
             <input
               type="text"
@@ -109,7 +135,7 @@ const FormCreate = () => {
               name="sprite"
               onChange={handleChange}
             />
-            {errors.sprite !== null && <p>{errors.sprite}</p>}
+            {errors.sprite !== null && <p className="error-message">{errors.sprite}</p>}
             <label className="formLabel">Hp:</label>
             <input
               placeholder="valor mínimo del atributo: 100"
@@ -120,7 +146,7 @@ const FormCreate = () => {
               id="hp"
               onChange={handleChange}
             />
-            {errors.hp !== null && <p>{errors.hp}</p>}
+            {errors.hp !== null && <p className="error-message">{errors.hp}</p>}
             <label className="formLabel">Ataque:</label>
             <input
               placeholder="valor mínimo del atributo: 5"
@@ -130,7 +156,7 @@ const FormCreate = () => {
               className="formInput"
               onChange={handleChange}
             />
-            {errors.atk !== null && <p>{errors.atk}</p>}
+            {errors.atk !== null && <p className="error-message">{errors.atk}</p>}
             <label className="formLabel">Ataque Especial:</label>
             <input
               placeholder="valor mínimo del atributo: 5"
@@ -140,7 +166,7 @@ const FormCreate = () => {
               name="spAtk"
               onChange={handleChange}
             />
-            {errors.spAtk && <p>{errors.spAtk}</p>}
+            {errors.spAtk && <p className="error-message">{errors.spAtk}</p>}
             <label className="formLabel">Defensa:</label>
             <input
               placeholder="valor mínimo del atributo: 5"
@@ -150,7 +176,7 @@ const FormCreate = () => {
               name="def"
               onChange={handleChange}
             />
-            {errors.def !== null && <p>{errors.def}</p>}
+            {errors.def !== null && <p className="error-message">{errors.def}</p>}
             <label className="formLabel">Defensa Especial:</label>
             <input
               placeholder="valor mínimo del atributo: 5"
@@ -160,7 +186,7 @@ const FormCreate = () => {
               name="spDef"
               onChange={handleChange}
             />
-            {errors.spDef !== null && <p>{errors.spDef}</p>}
+            {errors.spDef !== null && <p className="error-message">{errors.spDef}</p>}
             <label className="formLabel">Velocidad:</label>
             <input
               placeholder="valor mínimo del atributo: 10"
@@ -170,7 +196,7 @@ const FormCreate = () => {
               name="spd"
               onChange={handleChange}
             />
-            {errors.spd !== null && <p>{errors.spd}</p>}
+            {errors.spd !== null && <p className="error-message">{errors.spd}</p>}
             <label className="formLabel">Altura:</label>
             <input
               placeholder="valor mínimo del atributo: 1"
@@ -180,7 +206,7 @@ const FormCreate = () => {
               name="height"
               onChange={handleChange}
             />
-            {errors.height !== null && <p>{errors.height}</p>}
+            {errors.height !== null && <p className="error-message">{errors.height}</p>}
             <label className="formLabel">Peso:</label>
             <input
               placeholder="valor mínimo del atributo: 1"
@@ -190,9 +216,9 @@ const FormCreate = () => {
               name="weight"
               onChange={handleChange}
             />
-            {errors.weight !== null && <p>{errors.weight}</p>}
+            {errors.weight !== null && <p className="error-message">{errors.weight}</p>}
             <label className="formLabel">Tipos:</label>
-            {errors.types !== null && <p>{errors.types}</p>}
+            {errors.types !== null && <p className="error-message">{errors.types}</p>}
             <div className="typesContainer">
               {types && types.length > 0 &&
                 types.map((type) => (
@@ -208,6 +234,14 @@ const FormCreate = () => {
                   </div>
                 ))}
             </div>
+            {successMessage && (
+              <div className="modal-overlay">
+                <div className="modal-content">
+                  <p>{successMessage}</p>
+                  <button onClick={() => setSuccessMessage(null)}>Cerrar</button>
+                </div>
+              </div>
+            )}
             <button type="submit">Crear</button>
           </form>
           <p>

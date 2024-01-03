@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(https://free4kwallpapers.com/uploads/originals/2020/06/09/-kanto-starters-wallpaper.png);
+    /* background-image: url(https://free4kwallpapers.com/uploads/originals/2020/06/09/-kanto-starters-wallpaper.png); */
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat; 
@@ -17,29 +17,14 @@
     z-index: 1;
   }
   
-  /* .formContainer{
-    background-color: orange;
-    padding: 15px;
-    border: 1px solid brown;
-    border-radius: 8px;
-    margin-bottom: 0;
-  } */
-  
-  /* .formArticle {
-    width: 90%;
-    max-width: 400px;
-    margin: 0 auto;
-  } */
+
   
   .form {
     display: flex;
     flex-direction: column;
   }
   
-  /* .formLabel {
-    font-size: 16px;
-    padding: 12px 0;
-  } */
+  
   
   .typesContainer {
     display: flex;
@@ -51,10 +36,10 @@
   
   .formContainer {
     background-color: rgba(247, 243, 243, 0.114);
-    padding: 20px;
+    padding: 0px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px; 
+    width: 800px; 
     margin: auto; 
   }
   
@@ -63,34 +48,12 @@
     color: white;
   }
   
-  /* .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-   */
+ 
   .formLabel {
-    margin-top: 10px;
+    margin-top: -7px;
   }
   
-  /* .formInput {
-    width: 100%; 
-    max-width: 300px; 
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-  } */
   
-  /* .formCheckBoxLabel {
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-  } */
-  
-  /* .formCheckbox {
-    margin-right: 5px;
-  }
-   */
   button {
     margin-top: 30px;
     
@@ -124,4 +87,10 @@
 
   .home {
     color: white;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
   }

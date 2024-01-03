@@ -1,0 +1,49 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background:  rgba(96, 92, 92, 0.9); 
+  padding: 15px;
+  border-radius: 6px;
+  width: 100%; 
+  max-width: 1000px; 
+  margin-top: 80px; 
+  z-index: 1000; 
+}
+
+.close-button {
+  margin-top: 30px;
+    
+  padding: 1px 2px;
+  background-color: orange;
+  color: brown;
+  border: 3px solid brown;
+  border-radius: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.formArticle {
+  max-width: 600px; /* O ajusta según sea necesario */
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+}

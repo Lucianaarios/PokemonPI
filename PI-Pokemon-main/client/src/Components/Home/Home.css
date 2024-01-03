@@ -36,15 +36,15 @@
   
   /* Estilos para cada tarjeta de Pokémon en la lista */
   .pokemon-card {
-    background-color: rgba(96, 92, 92, 0.9); /* Fondo blanco translúcido */
-    border: 1px solid #f9f8f8; /* Borde negro */
-    border-radius: 40px; /* Bordes redondeados */
+    background-color: rgba(96, 92, 92, 0.9); 
+    border: 1px solid #f9f8f8; 
+    border-radius: 40px; 
     padding: 10px;
     cursor: pointer;
-    box-shadow: 0 15px 10px rgba(197, 26, 26, 0.782); /* Sombra gris */
-    width: 200px; /* Ajusta la anchura según tus necesidades */
-    height: 300px; /* Ajusta la altura según tus necesidades */
-    margin-bottom: 0; /* Elimina el margen inferior */
+    box-shadow: 0 15px 10px rgba(197, 26, 26, 0.782);
+    width: 200px; 
+    height: 300px; 
+    margin-bottom: 0;
   }
   
   /* Estilos para la imagen de cada tarjeta de Pokémon */
