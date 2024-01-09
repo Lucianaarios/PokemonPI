@@ -31,7 +31,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Cambiado para mostrar 4 tarjetas por fila */
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 110px;
   }
   
   /* Estilos para cada tarjeta de Pokémon en la lista */

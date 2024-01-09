@@ -1,12 +1,14 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items:center;
   background-color: #333;
   padding: 10px;
   color: white;
   margin-bottom: 100px;
-  z-index: 2;
+  position:fixed;
+  top:0%;
+  /* z-index: 1; */
 }
 
 .navbar a {

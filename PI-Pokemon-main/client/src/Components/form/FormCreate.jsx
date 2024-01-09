@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addPokemon, getTypes } from '../../redux/actions';
 import validate from './validate';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import './Form.css';
 
 const FormCreate = () => {
@@ -13,7 +13,7 @@ const FormCreate = () => {
 
   const [inputData, setInputData] = useState({
     name: '',
-    sprite: '', 
+    sprite: '',
     hp: '',
     atk: '',
     spAtk: '',
@@ -23,11 +23,23 @@ const FormCreate = () => {
     height: '',
     weight: '',
     types: [],
-    
   });
 
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState(null);
+  const [inputValid, setInputValid] = useState({
+    name: true,
+    sprite: true,
+    hp: true,
+    atk: true,
+    spAtk: true,
+    def: true,
+    spDef: true,
+    spd: true,
+    types: true,
+    height: true,
+    weight: true,
+  });
 
   useEffect(() => {
     dispatch(getTypes());
@@ -61,24 +73,28 @@ const FormCreate = () => {
         ...prevInputData,
         [name]: value,
       }));
+
+      const fieldErrors = validate(inputData );
+      setErrors(fieldErrors)
+
+     
     }
   };
 
-  
   const handleSubmit = async (event) => {
-    event.preventDefault();
-  
-    const formErrors = validate(inputData);
-    setErrors(formErrors);
-  
     try {
+      event.preventDefault();
+
+      const formErrors = validate(inputData);
+      setErrors(formErrors);
+
       console.log('Submitting data:', inputData);
       console.log('Se esta creando el pokemon');
       console.log(Object.keys(formErrors).length);
-  
+
       const response = await dispatch(addPokemon(inputData));
       console.log('Response from backend:', response);
-  
+
       if (response.status === 200) {
         console.log('Success status is true');
         setSuccessMessage('El Pokémon se ha creado con éxito');
@@ -96,20 +112,32 @@ const FormCreate = () => {
           types: [],
         });
         setErrors({});
+        setInputValid({
+          name: true,
+          sprite: true,
+          hp: true,
+          atk: true,
+          spAtk: true,
+          def: true,
+          spDef: true,
+          spd: true,
+          types: true,
+          height: true,
+          weight: true,
+        });
         navigate('/home');
       }
     } catch (error) {
       console.error('Error in handleSubmit:', error);
-      setErrors(prevErrors => ({ ...prevErrors, types: error.message }));
+      setErrors((prevErrors) => ({ ...prevErrors, types: error.message }));
     }
   };
-  
+
   useEffect(() => {
     return () => {
       setSuccessMessage(null);
     };
   }, []);
-
 
   return (
     <div className="container">
@@ -117,7 +145,7 @@ const FormCreate = () => {
         <article className="formArticle">
           <h2>Creá tu Pokemon</h2>
           <form className="form" onSubmit={handleSubmit}>
-            <label className="formLabel">Nombre:</label>
+            <label className={`formLabel ${!inputValid.name ? 'invalid' : ''}`}>Nombre:</label>
             <input
               placeholder="ejemplo: luciana"
               type="text"
@@ -125,99 +153,101 @@ const FormCreate = () => {
               name="name"
               id="name"
               onChange={handleChange}
+              className={!inputValid.name ? 'invalid' : ''}
             />
             {errors.name !== null && <p className="error-message">{errors.name}</p>}
-            <label className="formLabel">Imagen:</label>
+            <label className={`formLabel ${!inputValid.sprite ? 'invalid' : ''}`}>Imagen:</label>
             <input
               type="text"
               placeholder="Ingrese la URL de la imagen"
               value={inputData.sprite}
               name="sprite"
               onChange={handleChange}
+              className={!inputValid.sprite ? 'invalid' : ''}
             />
             {errors.sprite !== null && <p className="error-message">{errors.sprite}</p>}
-            <label className="formLabel">Hp:</label>
+            <label className={`formLabel ${!inputValid.hp ? 'invalid' : ''}`}>Hp:</label>
             <input
               placeholder="valor mínimo del atributo: 100"
               type="text"
               value={inputData.hp}
-              className="formInput"
               name="hp"
               id="hp"
               onChange={handleChange}
+              className={!inputValid.hp ? 'invalid' : ''}
             />
             {errors.hp !== null && <p className="error-message">{errors.hp}</p>}
-            <label className="formLabel">Ataque:</label>
+            <label className={`formLabel ${!inputValid.atk ? 'invalid' : ''}`}>Ataque:</label>
             <input
               placeholder="valor mínimo del atributo: 5"
               type="text"
               value={inputData.atk}
               name="atk"
-              className="formInput"
               onChange={handleChange}
+              className={!inputValid.atk ? 'invalid' : ''}
             />
             {errors.atk !== null && <p className="error-message">{errors.atk}</p>}
-            <label className="formLabel">Ataque Especial:</label>
+            <label className={`formLabel ${!inputValid.spAtk ? 'invalid' : ''}`}>Ataque Especial:</label>
             <input
               placeholder="valor mínimo del atributo: 5"
               type="text"
               value={inputData.spAtk}
-              className="formInput"
               name="spAtk"
               onChange={handleChange}
+              className={!inputValid.spAtk ? 'invalid' : ''}
             />
             {errors.spAtk && <p className="error-message">{errors.spAtk}</p>}
-            <label className="formLabel">Defensa:</label>
+            <label className={`formLabel ${!inputValid.def ? 'invalid' : ''}`}>Defensa:</label>
             <input
               placeholder="valor mínimo del atributo: 5"
               type="text"
               value={inputData.def}
-              className="formInput"
               name="def"
               onChange={handleChange}
+              className={!inputValid.def ? 'invalid' : ''}
             />
             {errors.def !== null && <p className="error-message">{errors.def}</p>}
-            <label className="formLabel">Defensa Especial:</label>
+            <label className={`formLabel ${!inputValid.spDef ? 'invalid' : ''}`}>Defensa Especial:</label>
             <input
               placeholder="valor mínimo del atributo: 5"
               type="text"
               value={inputData.spDef}
-              className="formInput"
               name="spDef"
               onChange={handleChange}
+              className={!inputValid.spDef ? 'invalid' : ''}
             />
             {errors.spDef !== null && <p className="error-message">{errors.spDef}</p>}
-            <label className="formLabel">Velocidad:</label>
+            <label className={`formLabel ${!inputValid.spd ? 'invalid' : ''}`}>Velocidad:</label>
             <input
               placeholder="valor mínimo del atributo: 10"
               type="text"
               value={inputData.spd}
-              className="formInput"
               name="spd"
               onChange={handleChange}
+              className={!inputValid.spd ? 'invalid' : ''}
             />
             {errors.spd !== null && <p className="error-message">{errors.spd}</p>}
-            <label className="formLabel">Altura:</label>
+            <label className={`formLabel ${!inputValid.height ? 'invalid' : ''}`}>Altura:</label>
             <input
               placeholder="valor mínimo del atributo: 1"
               type="text"
               value={inputData.height}
-              className="formInput"
               name="height"
               onChange={handleChange}
+              className={!inputValid.height ? 'invalid' : ''}
             />
             {errors.height !== null && <p className="error-message">{errors.height}</p>}
-            <label className="formLabel">Peso:</label>
+            <label className={`formLabel ${!inputValid.weight ? 'invalid' : ''}`}>Peso:</label>
             <input
               placeholder="valor mínimo del atributo: 1"
               type="text"
               value={inputData.weight}
-              className="formInput"
               name="weight"
               onChange={handleChange}
+              className={!inputValid.weight ? 'invalid' : ''}
             />
             {errors.weight !== null && <p className="error-message">{errors.weight}</p>}
-            <label className="formLabel">Tipos:</label>
+            <label className={`formLabel ${!inputValid.types ? 'invalid' : ''}`}>Tipos:</label>
             {errors.types !== null && <p className="error-message">{errors.types}</p>}
             <div className="typesContainer">
               {types && types.length > 0 &&
@@ -242,10 +272,10 @@ const FormCreate = () => {
                 </div>
               </div>
             )}
-            <button type="submit">Crear</button>
+            <button type="submit" disabled={!Object.values(inputValid).every((v) => v)}>Crear</button>
           </form>
           <p>
-            <Link to="/home" className="home">Volver a la página de inicio</Link>
+            {/* <Link to="/home" className="home">Volver a la página de inicio</Link> */}
           </p>
         </article>
       </section>

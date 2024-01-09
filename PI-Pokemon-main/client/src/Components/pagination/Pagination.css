@@ -13,10 +13,17 @@ button {
   margin: 0 5px;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background-color: #45a049;
+}
+
+.buttonContainer .active {
+  background-color: #ddd;
+  color: #808080;
+  cursor: not-allowed;
 }
 
 .pageNumber {

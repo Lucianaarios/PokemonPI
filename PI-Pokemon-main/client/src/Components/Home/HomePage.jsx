@@ -92,7 +92,7 @@ const HomePage = () => {
                 <h4 className="pokemon-name">{pokemon.name}</h4>
                 <p>{pokemon.atk}</p>
                 <p className="pokemon-types">
-                  {pokemon.types && pokemon.types.length > 0
+                  {pokemon.types 
                     ? pokemon.types.map((type, index) => (
                       <span key={index}>
                         {type && type.name && (
@@ -102,7 +102,16 @@ const HomePage = () => {
                         )}
                       </span>
                     ))
-                    : 'No types'}
+                    : 
+                    pokemon.Types.map((type, index) => (
+                      <span key={index}>
+                        {type && type.name && (
+                          <span className={`type-${String(type.name).toLowerCase()}`}>
+                            {type.name} - {type.otraPropiedad}
+                          </span>
+                        )}
+                      </span>
+                    ))}
                 </p>
               </div>
             ))}

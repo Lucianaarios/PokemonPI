@@ -1,28 +1,22 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
 
-.container{
+
+ .container{
     width: 100%;
+    margin-top: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url(https://free4kwallpapers.com/uploads/originals/2020/06/09/-kanto-starters-wallpaper.png); */
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat; 
-    min-height: 94.2vh; 
-    z-index: 1;
-  }
+  } 
   
 
   
-  .form {
+   .form {
     display: flex;
     flex-direction: column;
-  }
+  } 
   
   
   
@@ -31,21 +25,24 @@
     flex-wrap: wrap;
     gap: 10px;
   }
-  
+   
 
   
-  .formContainer {
+   .formContainer {
     background-color: rgba(247, 243, 243, 0.114);
     padding: 0px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 800px; 
-    margin: auto; 
-  }
+    width: 800px;
+    margin: auto;
+    z-index: 1001; /* Un valor superior al del overlay */
+    position: relative; /* Añade esta línea */
+  } 
   
   .formArticle {
     text-align: center;
     color: white;
+    background: transparent; /* Añade esta línea */
   }
   
  
@@ -55,7 +52,7 @@
   
   
   button {
-    margin-top: 30px;
+    margin-top: 10px;
     
   padding: 1px 2px;
   background-color: orange;
@@ -89,8 +86,14 @@
     color: white;
   }
 
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
+  .invalid {
+    border: 1px solid rgb(157, 0, 0);
   }
+  
+  .error-message {
+    color: rgb(149, 3, 3);
+    margin-top: 5px;
+    font-size: 14px;
+  }
+
+  
