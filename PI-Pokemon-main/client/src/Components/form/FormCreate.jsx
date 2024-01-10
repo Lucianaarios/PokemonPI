@@ -8,6 +8,7 @@ import './Form.css';
 
 const FormCreate = () => {
   const navigate = useNavigate();
+  const pokemon = useSelector((state) => state.allPokemons);
   const types = useSelector((state) => state.pokemonsTypes);
   const dispatch = useDispatch();
 
@@ -74,7 +75,10 @@ const FormCreate = () => {
         [name]: value,
       }));
 
-      const fieldErrors = validate(inputData );
+      const fieldErrors = validate({
+        ...inputData,
+        [name]: value,
+      }, pokemon);
       setErrors(fieldErrors)
 
      
@@ -85,7 +89,7 @@ const FormCreate = () => {
     try {
       event.preventDefault();
 
-      const formErrors = validate(inputData);
+      const formErrors = validate(inputData, pokemon);
       setErrors(formErrors);
 
       console.log('Submitting data:', inputData);

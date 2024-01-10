@@ -1,4 +1,4 @@
-const validate = (data) => {
+const validate = (data, pokemon) => {
     console.log(data)
     let errors = {
         name: null,
